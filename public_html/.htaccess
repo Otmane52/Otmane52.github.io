@@ -1,0 +1,15 @@
+Options -Indexes
+
+# Protect connection details and database exports
+<Files "db_connect.php">
+    Require all denied
+</Files>
+
+<FilesMatch "^schema\\.sql$">
+    Require all denied
+</FilesMatch>
+
+<IfModule mod_headers.c>
+Header set X-Content-Type-Options "nosniff"
+Header always set Referrer-Policy "no-referrer-when-downgrade"
+</IfModule>
